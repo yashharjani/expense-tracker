@@ -62,13 +62,18 @@ export default function ReceiptUploader({ onUploadSuccess }) {
         body: JSON.stringify({ filename, contentType }),
       })
 
+      console.log("Uploading with Content-Type:", contentType);
+
       const { upload_url } = await res.json()
 
       // Step 2: Upload file to S3
       setMessage("Uploading...")
       const uploadRes = await fetch(upload_url, {
         method: "PUT",
-        headers: { "Content-Type": contentType },
+        headers: { 
+          "Content-Type": contentType,
+          "x-amz-server-side-encryption": "AES256",
+        },
         body: file,
       })
 
