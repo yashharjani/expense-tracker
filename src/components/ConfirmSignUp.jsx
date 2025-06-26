@@ -26,7 +26,7 @@ export default function ConfirmSignUp({ email }) {
         setIsLoading(false)
         return
       }
-      setMessage("✅ Account confirmed! You can now sign in.")
+      setMessage("✅ Account confirmed! Subscription mail has been sent. After subscribing, you can sign in.")
       setIsLoading(false)
     })
   }
